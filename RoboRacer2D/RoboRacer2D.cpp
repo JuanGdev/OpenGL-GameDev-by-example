@@ -4,6 +4,11 @@
 #include "framework.h"
 #include "RoboRacer2D.h"
 
+#include <Windows.h>
+#include <gl/GL.h>
+#include <gl/GLU.h>
+
+
 #define MAX_LOADSTRING 100
 
 // Variables globales:
@@ -16,6 +21,9 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+void StartGame() {};
+void GameLoop() {};
+void EndGame() {};
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -26,7 +34,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: Colocar código aquí.
-
+    
     // Inicializar cadenas globales
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_ROBORACER2D, szWindowClass, MAX_LOADSTRING);
@@ -43,14 +51,29 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 
     // Bucle principal de mensajes:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    StartGame();
+    // Game loop
+    bool done = false;
+    while (!done)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (PeekMessage (&msg, NULL, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            if (msg.message == WM_QUIT)
+            {
+                done = true;
+            }
+            else
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else
+        {
+            GameLoop();
         }
     }
+    EndGame();
 
     return (int) msg.wParam;
 }
