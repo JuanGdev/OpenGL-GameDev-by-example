@@ -66,7 +66,7 @@ void drawQuad()
 	glVertex2f(0.1f, -0.4f);
 	glVertex2f(0.4f, -0.4f);
 	glVertex2f(0.4f, -0.1f);
-
+	//test
 	glEnd();
 }
 void update()
