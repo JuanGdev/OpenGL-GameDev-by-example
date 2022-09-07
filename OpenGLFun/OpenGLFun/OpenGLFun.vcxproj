@@ -150,6 +150,10 @@
   <ItemGroup>
     <Library Include="glut32.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\estesi.bmp" />
+    <Image Include="test.bmp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
