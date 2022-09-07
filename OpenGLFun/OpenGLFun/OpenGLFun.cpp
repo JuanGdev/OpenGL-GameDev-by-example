@@ -36,12 +36,46 @@ void drawLines()
 
 	glEnd();
 }
+void drawSolidTriangle()
+{
+	glBegin(GL_TRIANGLES);
 
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex2f(0.1f, -0.6f);
+	glVertex2f(0.7f, -0.6f);
+	glVertex2f(0.4f, -0.1f);
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+	glVertex2f(0.4f, -0.1f);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex2f(0.1f, 0.4f);
+
+	glColor3f(0.0f, 0.0f, 1.0f);
+	glVertex2f(0.7f, 0.4f);
+
+	glEnd();
+}
+
+void drawQuad()
+{
+	glBegin(GL_QUADS);
+
+	glColor3f(0.0f, 1.0f, 0.0f);
+	glVertex2f(0.1f, -0.1f);
+	glVertex2f(0.1f, -0.4f);
+	glVertex2f(0.4f, -0.4f);
+	glVertex2f(0.4f, -0.1f);
+
+	glEnd();
+}
 void update()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-	//drawPoints();
-	drawLines();
+	//	drawPoints();
+	//	drawLines();
+	//	drawSolidTriangle();
+	drawQuad();
 	glFlush();
 }
 
