@@ -3,10 +3,10 @@
 
 #include "framework.h"
 #include "RoboRacer2D.h"
-
 #include <Windows.h>
 #include <gl/GL.h>
 #include <gl/GLU.h>
+#include "SOIL.h"
 
 
 #define MAX_LOADSTRING 100
