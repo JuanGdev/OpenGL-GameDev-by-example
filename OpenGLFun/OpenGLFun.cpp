@@ -140,9 +140,9 @@ int main()
 	glutCreateWindow("GL Fun");
 	glutInitWindowSize(320, 320);
 	glutInitWindowPosition(500, 500);
-	glutDisplayFunc(update);
 	initGL();
-	//loadTexture("*/estesi.bmp"); 
+	loadTexture("opengel.bmp"); 
+	glutDisplayFunc(update);
 	glutMainLoop();
 	return 0;
 }
