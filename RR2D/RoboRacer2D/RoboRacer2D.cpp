@@ -7,6 +7,7 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 #include "SOIL.h"
+#include "Sprite.h"
 
 
 #define MAX_LOADSTRING 100
@@ -16,15 +17,82 @@ HINSTANCE hInst;                                // instancia actual
 WCHAR szTitle[MAX_LOADSTRING];                  // Texto de la barra de título
 WCHAR szWindowClass[MAX_LOADSTRING];            // nombre de clase de la ventana principal
 
+Sprite* robot_left;
+Sprite* robot_right;
+Sprite* robot_right_strip;
+Sprite* robot_left_strip;
+Sprite* background;
+Sprite* player;
+
 // Declaraciones de funciones adelantadas incluidas en este módulo de código:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-void StartGame() {};
 void GameLoop() {};
 void EndGame() {};
+const bool LoadTextures()
+{
+    background = new Sprite(1);
+    background->SetFrameSize(1877.0f, 600.0f);
+    background->SetNumberOfFrames(1);
+    //background->AddTexture("background.png", false);
 
+    //robot_right = new Sprite(4);
+    //robot_right->SetFrameSize(100.0f, 125.0f);
+    //robot_right->SetNumberOfFrames(4);
+    //robot_right->SetPosition(0, 250.0f);
+    //robot_right->AddTexture(""); // 1
+    //robot_right->AddTexture(""); // 2
+    //robot_right->AddTexture(""); // 3
+    //robot_right->AddTexture(""); // 4
+
+    //robot_left = new Sprite(4);
+    //robot_left->SetFrameSize(100.0f, 125.0f);
+    //robot_left->SetNumberOfFrames(4);
+    //robot_left->SetPosition(0, 250.0f);
+    //robot_left->AddTexture(""); // 1
+    //robot_left->AddTexture(""); // 2
+    //robot_left->AddTexture(""); // 3
+    //robot_left->AddTexture(""); // 4
+
+    //robot_right_strip = new Sprite(1);
+    //robot_right_strip->SetFrameSize(125.0f, 100.0f);
+    //robot_right_strip->SetNumberOfFrames(4);
+    //robot_right_strip->SetPosition(0, 250.0f);
+    //robot_right_strip->AddTexture(""); // 1
+    //robot_right_strip->AddTexture(""); // 2
+    //robot_right_strip->AddTexture(""); // 3
+    //robot_right_strip->AddTexture(""); // 4
+
+    //robot_left_strip = new Sprite(1);
+    //robot_left_strip->SetFrameSize(125.0f, 100.0f);
+    //robot_left_strip->SetNumberOfFrames(4);
+    //robot_left_strip->SetPosition(0, 250.0f);
+    //robot_left_strip->AddTexture(""); // 1
+    //robot_left_strip->AddTexture(""); // 2
+    //robot_left_strip->AddTexture(""); // 3
+    //robot_left_strip->AddTexture(""); // 4
+
+    background->IsVisible(true);
+    background->IsActive(true);
+    background->SetVelocity(-50.0f);
+
+    //robot_right->IsActive(true);
+    //robot_right->IsVisible(true);
+    //robot_right->SetVelocity(50.0f);
+
+    //player = robot_right;
+    //player->IsActive(true);
+    //player->IsVisible(true);
+    //player->SetVelocity(50.0f);
+
+    return true;
+}
+
+void StartGame() {
+    //LoadTextures();
+};
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,

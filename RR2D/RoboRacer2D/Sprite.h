@@ -1,5 +1,6 @@
 #pragma once
-#include <GL/gl.h>
+#include <windows.h>
+#include <gl/gl.h>
 
 class Sprite
 {
@@ -53,7 +54,8 @@ public:
 
 	const bool AddTexture(const char* p_fileName, const bool p_useTransparency = true);
 	const GLuint GetCurrentFrame() {
-		if (m_isSpriteSheet) {
+		if (m_isSpriteSheet) 
+		{
 			return m_textures[0];
 		}
 		else
@@ -62,6 +64,7 @@ public:
 		}
 	}
 
+	void SetPosition(const GLfloat p_x, const GLfloat p_y) { m_position.x = p_x; m_position.y = p_y; }
 	void SetPosition(const Point p_position) { m_position = p_position; }
 	const Size GetSize() const { return m_size; }
 

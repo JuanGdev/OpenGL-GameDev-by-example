@@ -22,9 +22,32 @@ Sprite::Sprite(const unsigned int p_numberOfTextures)
 	m_isVisible = false;
 	m_isActive = false;
 	m_isSpriteSheet = false;
+	m_useTransparency = false;
 }
 
 Sprite::~Sprite()
 {
 	delete[] m_textures;
+}
+
+const bool Sprite::AddTexture(const char* p_imageName, const bool p_useTransparency)
+{
+	GLuint texture = SOIL_load_OGL_texture(p_imageName, SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, 0);
+	if (texture == 0)
+	{
+		return false;
+	}
+
+	m_textures[m_textureIndex] = texture;
+	m_textureIndex++;
+	if (m_textureIndex == 1 && m_numberOfFrames > 1)
+	{
+		m_isSpriteSheet = true;
+	}
+	else
+	{
+		m_isSpriteSheet = false;
+	}
+	m_useTransparency = p_useTransparency;
+	return true;
 }
